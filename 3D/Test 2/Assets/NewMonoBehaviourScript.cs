@@ -25,14 +25,6 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        if (moveInput.y > 0)
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (moveInput.y < 0)
-        {
-            transform.localScale = new Vector3(1, -1, 1);
-        }
         transform.Translate(Vector3.right * moveInput.x * Time.deltaTime * movespeed);
         transform.Translate(Vector3.up * moveInput.y * Time.deltaTime * movespeed);
     }
