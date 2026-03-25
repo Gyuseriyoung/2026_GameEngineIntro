@@ -19,6 +19,11 @@ public class TitleManager : MonoBehaviour
         helpPanel.SetActive(false);
     }
 
+    public void Title()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+    }
+
     public void GameQuit()
     {
         Application.Quit();
