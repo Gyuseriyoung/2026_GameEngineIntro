@@ -2,6 +2,7 @@ using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 public class NewMonoBehaviourScript : MonoBehaviour
 {
     private Vector2 moveInput;
@@ -11,15 +12,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float jumpforce = 3f;
     private Rigidbody2D rb;
     private Animator myAnimator;
-    
+
+    float Score;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "Death")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
-        else
+        
+        if (collision.CompareTag("Finish"))
         {
+            Score += 10f;
+            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)Score);
             SceneManager.LoadScene("PlayScene_" + collision.name);
         }
     }
