@@ -24,9 +24,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
         
         if (collision.CompareTag("Finish"))
         {
-            Score += 10f;
-            HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)Score);
+            //HighScore.TrySet(SceneManager.GetActiveScene().buildIndex, (int)Score);
+            StageResultSaver.SaveStage(SceneManager.GetActiveScene().buildIndex, (int)Score);
             SceneManager.LoadScene("PlayScene_" + collision.name);
+        }
+
+        if (collision.CompareTag("Item"))
+        {
+            Score += collision.GetComponent<ItemObject>().GetPoint();
+            Destroy(collision.gameObject);
         }
     }
     

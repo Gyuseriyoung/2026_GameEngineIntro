@@ -18,6 +18,7 @@ public class TitleManager : MonoBehaviour
 
     public GameObject helpPanel;
     public GameObject HighScorePanel;
+    public GameObject RankPanel;
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("PlayScene_Door1");
@@ -40,6 +41,16 @@ public class TitleManager : MonoBehaviour
     public void HighScoreClose()
     {
         HighScorePanel.SetActive(false);
+    }
+
+    public void RankOpen()
+    {
+        RankPanel.SetActive(true);
+    }
+    
+    public void RankClose()
+    {
+        RankPanel.SetActive(false);
     }
 
     public void Title()
